@@ -3,9 +3,9 @@ restoredefaultpath
 addpath('Audio Files')
 
 N = 2;              % number of microphone, (N-1)th order of DMA
-d = 0.1;                        % spacing
+d = 0.17;                        % spacing
 DFTLEN = 2205;                  % length of DFT
-alpha = [0.37];    % alpha values
+alpha = [0.25];    % alpha values
 
 % specify the name of the input wav files in the string array
 % the number of wav files added is not constrained
@@ -35,13 +35,13 @@ y = beamforming_t(tau_samp, x);
 sound(real(y), fs)      % playback the output of the beamformer
 
 
-%%%%%% the following functions is irrelavent with the sound signal %%%%%%
+%%%%%% the following functions are irrelavent with the sound signal %%%%%
 %%%%%% all calculations are done using microphone array parameters %%%%%%
 % Find the weight of frequency bins
 [f, W] = DMA_weights(N, d, alpha, DFTLEN, fs, 'Equalization', false);
 
 % frequency response for all angles
-freq_resp = frequency_response_3d(d, f, W, fs, 'AngleResolution', 1, 'MinimumAmplitude', -60, 'LogScale', false);
+freq_resp = frequency_response_3d(d, f, W, fs, 'AngleResolution', 0.1, 'MinimumAmplitude', -60, 'LogScale', true);
 
 % plot the beampattern at specified frequency
 [freq, theta, B] = beampattern(freq_resp, 1000);

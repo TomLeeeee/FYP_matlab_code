@@ -30,7 +30,7 @@ y = beamforming(W, x);                              % and-Sum
 sound(real(y), fs)      % playback the output of the beamformer
 
 
-%%%%%% the following functions is irrelavent with the sound signal %%%%%%
+%%%%%% the following functions are irrelavent with the sound signal %%%%%
 %%%%%% all calculations are done using microphone array parameters %%%%%%
 % frequency response for all angles
 freq_resp = frequency_response_3d(d, f, W, fs, 'AngleResolution', 0.1, 'MinimumAmplitude', -60, 'LogScale', false);
